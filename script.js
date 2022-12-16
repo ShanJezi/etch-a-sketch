@@ -13,7 +13,14 @@ function makeGrid(rows, cols) {
   };
 };
 
-makeGrid(16, 16);
+const changeSize = document.querySelector('.change-size');
+changeSize.addEventListener('click', askSize);
+
+function askSize(num) {
+  rows = prompt('Enter number of squares per side');
+  cols = rows;
+  makeGrid(rows, cols);
+}
 
 const grid = document.querySelectorAll('.grid-item');
 

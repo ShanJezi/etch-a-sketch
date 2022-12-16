@@ -3,6 +3,7 @@
 .grid-item {
   width: auto;
   height: auto;
+  border: 2px solid black;
 }
 
 .grid-container {
