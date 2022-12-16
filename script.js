@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('.grid-container');
 
+
 function makeGrid(rows, cols) {
   gridContainer.setAttribute('style', 
   `grid-template-columns: repeat(${cols}, 1fr);`, 
@@ -7,8 +8,19 @@ function makeGrid(rows, cols) {
   for (let i = 0; i < (rows * cols); i++) {
     let newGridItem = document.createElement('div');
     newGridItem.classList.add('grid-item');
+    newGridItem.setAttribute('id', i);
     gridContainer.appendChild(newGridItem);
   };
 };
 
 makeGrid(16, 16);
+
+const grid = document.querySelectorAll('.grid-item');
+
+grid.forEach((div) => {
+  div.addEventListener('mouseover', changeColor)
+});
+
+function changeColor(div) {
+  console.log(div.id);
+}
