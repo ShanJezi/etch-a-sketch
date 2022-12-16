@@ -18,9 +18,8 @@ makeGrid(16, 16);
 const grid = document.querySelectorAll('.grid-item');
 
 grid.forEach((div) => {
-  div.addEventListener('mouseover', changeColor)
+  div.addEventListener('mouseover', () => {
+    div.classList.add('blue');
+  });
 });
 
-function changeColor(div) {
-  console.log(div.id);
-}
