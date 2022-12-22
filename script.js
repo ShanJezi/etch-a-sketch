@@ -10,6 +10,7 @@ function makeGrid(rows, cols) {
     newGridItem.classList.add('grid-item');
     newGridItem.setAttribute('id', i);
     gridContainer.appendChild(newGridItem);
+    changeColor();
   };
 };
 
@@ -34,11 +35,11 @@ function changeSize(num) {
   makeGrid(rows, cols);
 }
 
-const grid = document.querySelectorAll('.grid-item');
-
-grid.forEach((div) => {
-  div.addEventListener('mouseover', () => {
-    div.classList.add('blue');
+function changeColor() {
+  const grid = document.querySelectorAll('.grid-item');
+  grid.forEach((div) => {
+    div.addEventListener('mouseover', () => {
+      div.classList.add('blue');
+    });
   });
-});
-
+};
