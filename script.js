@@ -6,6 +6,9 @@ changeSizeBtn.addEventListener('click', changeSize);
 const resetGridBtn = document.querySelector('.reset-grid');
 resetGridBtn.addEventListener('click', resetGrid);
 
+const toggleLinesBtn = document.querySelector('.toggle-grid-lines');
+toggleLinesBtn.addEventListener('click', toggleLines)
+
 
 function makeGrid(rows, cols) {
   gridContainer.setAttribute('style', 
@@ -14,19 +17,13 @@ function makeGrid(rows, cols) {
   for (let i = 0; i < (rows * cols); i++) {
     let newGridItem = document.createElement('div');
     newGridItem.classList.add('grid-item');
+    newGridItem.classList.add('grid-lines');
     gridContainer.appendChild(newGridItem);
   };
   draw();
 };
 
 makeGrid(16,16);
-
-function resetGrid() {
-  const grid = document.querySelectorAll('.grid-item');
-  grid.forEach((div) => {
-    div.classList.remove('blue');
-  });
-};
 
 function draw() {
   const grid = document.querySelectorAll('.grid-item');
@@ -52,3 +49,17 @@ function changeSize(num) {
   cols = rows;
   makeGrid(rows, cols);
 };
+
+function resetGrid() {
+  const grid = document.querySelectorAll('.grid-item');
+  grid.forEach((div) => {
+    div.classList.remove('blue');
+  });
+};
+
+function toggleLines() {
+  const grid = document.querySelectorAll('.grid-item');
+  grid.forEach((div) => {
+    div.classList.toggle('grid-lines');
+  });
+}

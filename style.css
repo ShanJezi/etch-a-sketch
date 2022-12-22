@@ -3,6 +3,9 @@
 .grid-item {
   width: auto;
   height: auto;
+}
+
+.grid-lines {
   border: 1px dashed black;
 }
 
