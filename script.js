@@ -1,5 +1,11 @@
 const gridContainer = document.querySelector('.grid-container');
 
+const changeSizeBtn = document.querySelector('.change-size');
+changeSizeBtn.addEventListener('click', changeSize);
+
+const resetGridBtn = document.querySelector('.reset-grid');
+resetGridBtn.addEventListener('click', resetGrid);
+
 
 function makeGrid(rows, cols) {
   gridContainer.setAttribute('style', 
@@ -9,11 +15,20 @@ function makeGrid(rows, cols) {
     let newGridItem = document.createElement('div');
     newGridItem.classList.add('grid-item');
     gridContainer.appendChild(newGridItem);
-    changeColor();
   };
+  draw();
 };
 
-function changeColor() {
+makeGrid(16,16);
+
+function resetGrid() {
+  const grid = document.querySelectorAll('.grid-item');
+  grid.forEach((div) => {
+    div.classList.remove('blue');
+  });
+};
+
+function draw() {
   const grid = document.querySelectorAll('.grid-item');
   grid.forEach((div) => {
     div.addEventListener('mouseover', () => {
@@ -28,14 +43,11 @@ function removeGrid() {
   }
 }
 
-const askSize = document.querySelector('.change-size');
-askSize.addEventListener('click', changeSize);
-
 function changeSize(num) {
   removeGrid();
   rows = prompt('Enter number of squares per side');
-  if (rows > 40) {
-    rows = 40;
+  if (rows > 100) {
+    rows = 100;
   }
   cols = rows;
   makeGrid(rows, cols);
