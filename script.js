@@ -13,11 +13,23 @@ function makeGrid(rows, cols) {
   };
 };
 
-const changeSize = document.querySelector('.change-size');
-changeSize.addEventListener('click', askSize);
+function removeGrid() {
+  let gridItem = gridContainer.lastElementChild;
+  while (gridItem) {
+    gridContainer.removeChild(gridItem);
+    gridItem = gridContainer.lastElementChild;
+  }
+}
 
-function askSize(num) {
+const askSize = document.querySelector('.change-size');
+askSize.addEventListener('click', changeSize);
+
+function changeSize(num) {
+  removeGrid();
   rows = prompt('Enter number of squares per side');
+  if (rows > 100) {
+    rows = 100;
+  }
   cols = rows;
   makeGrid(rows, cols);
 }
