@@ -8,17 +8,23 @@ function makeGrid(rows, cols) {
   for (let i = 0; i < (rows * cols); i++) {
     let newGridItem = document.createElement('div');
     newGridItem.classList.add('grid-item');
-    newGridItem.setAttribute('id', i);
     gridContainer.appendChild(newGridItem);
     changeColor();
   };
 };
 
+function changeColor() {
+  const grid = document.querySelectorAll('.grid-item');
+  grid.forEach((div) => {
+    div.addEventListener('mouseover', () => {
+      div.classList.add('blue');
+    });
+  });
+};
+
 function removeGrid() {
-  let gridItem = gridContainer.lastElementChild;
-  while (gridItem) {
-    gridContainer.removeChild(gridItem);
-    gridItem = gridContainer.lastElementChild;
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.lastChild);
   }
 }
 
@@ -28,18 +34,9 @@ askSize.addEventListener('click', changeSize);
 function changeSize(num) {
   removeGrid();
   rows = prompt('Enter number of squares per side');
-  if (rows > 100) {
-    rows = 100;
+  if (rows > 40) {
+    rows = 40;
   }
   cols = rows;
   makeGrid(rows, cols);
-}
-
-function changeColor() {
-  const grid = document.querySelectorAll('.grid-item');
-  grid.forEach((div) => {
-    div.addEventListener('mouseover', () => {
-      div.classList.add('blue');
-    });
-  });
 };
