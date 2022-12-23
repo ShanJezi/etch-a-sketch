@@ -12,6 +12,9 @@ toggleLinesBtn.addEventListener('click', toggleLines)
 const eraseBtn = document.querySelector('.erase');
 eraseBtn.addEventListener('click', erase);
 
+const drawBtn = document.querySelector('.draw');
+drawBtn.addEventListener('click', draw);
+
 
 function makeGrid(rows, cols) {
   gridContainer.setAttribute('style', 
@@ -41,7 +44,7 @@ function erase() {
   const grid = document.querySelectorAll('.grid-item');
   grid.forEach((div) => {
     div.addEventListener('mouseover', () => {
-      div.classList.toggle('blue');
+      div.classList.remove('blue');
     });
   });
 };
