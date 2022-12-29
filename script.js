@@ -18,7 +18,6 @@ rainbowBtn.onclick = () => setCurrentMode('rainbow');
 
 function setCurrentMode(newMode) {
   currentMode = newMode;
-  console.log(currentMode);
 }
 
 
